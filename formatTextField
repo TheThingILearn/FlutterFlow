@@ -1,0 +1,123 @@
+///youtube tutorial-
+
+// Automatic FlutterFlow imports
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/widgets/index.dart'; // Imports other custom widgets
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom widget code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
+
+class NewCustomWidgetTest extends StatefulWidget {
+  const NewCustomWidgetTest({
+    super.key,
+    this.width,
+    this.height,
+    this.initialValue,
+    required this.onChanged,
+    this.labelText,
+    required this.borderRadius,
+    required this.color,
+    required this.labelColor,
+    this.currency,
+    this.hintText,
+  });
+
+  final double? width;
+  final double? height;
+  final String? initialValue;
+  final Future Function(String string) onChanged;
+  final String? labelText;
+  final double borderRadius;
+  final Color color;
+  final Color? labelColor;
+  final String? currency;
+  final String? hintText;
+
+  @override
+  State<NewCustomWidgetTest> createState() => _NumberInputFieldState();
+}
+
+class _NumberInputFieldState extends State<NewCustomWidgetTest> {
+  late TextEditingController _controller;
+  final NumberFormat _formatter = NumberFormat('#,###');
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.initialValue);
+    _controller.addListener(_formatNumber);
+  }
+
+  void _formatNumber() {
+    String text = _controller.text.replaceAll(',', '');
+    if (text.isNotEmpty) {
+      final number = int.tryParse(text);
+      if (number != null) {
+        final formattedText = _formatter.format(number);
+        _controller.value = _controller.value.copyWith(
+          text: formattedText,
+          selection: TextSelection.collapsed(offset: formattedText.length),
+        );
+        widget.onChanged(formattedText);
+      }
+    } else {
+      widget.onChanged('');
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.removeListener(_formatNumber);
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: widget.width,
+      height: widget.height,
+      child: TextField(
+        controller: _controller,
+        //the keyboard type that will open when you press
+        keyboardType: TextInputType.number,
+        //only digits can be input to the textfield
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        decoration: InputDecoration(
+          //radius border
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+            borderSide: BorderSide(color: widget.color),
+          ),
+          //how its look when you press on it
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+            borderSide: BorderSide(color: widget.color),
+          ),
+          //how its looks normal
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+            borderSide: BorderSide(color: widget.color),
+          ),
+          //lable text
+          labelText: widget.labelText,
+          labelStyle: TextStyle(color: widget.labelColor),
+          //currency
+          prefixText: widget.currency,
+
+          hintText: widget.hintText,
+        ),
+        onChanged: (value) => widget.onChanged(value),
+      ),
+    );
+  }
+}
+
+// Set your widget name, define your parameter, and then add the
+// boilerplate code using the green button on the right!
