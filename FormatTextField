@@ -13,8 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
-class NewCustomWidgetTest extends StatefulWidget {
-  const NewCustomWidgetTest({
+class FormatTextField extends StatefulWidget {
+  const FormatTextField({
     super.key,
     this.width,
     this.height,
@@ -40,10 +40,10 @@ class NewCustomWidgetTest extends StatefulWidget {
   final String? hintText;
 
   @override
-  State<NewCustomWidgetTest> createState() => _NumberInputFieldState();
+  State<FormatTextField> createState() => _NumberInputFieldState();
 }
 
-class _NumberInputFieldState extends State<NewCustomWidgetTest> {
+class _NumberInputFieldState extends State<FormatTextField> {
   late TextEditingController _controller;
   final NumberFormat _formatter = NumberFormat('#,###');
 
