@@ -31,7 +31,7 @@ class FormatTextField extends StatefulWidget {
   final double? width;
   final double? height;
   final String? initialValue;
-  final Future Function(String string) onChanged;
+  final Future Function(String newValue) onChanged;
   final String? labelText;
   final double borderRadius;
   final Color color;
