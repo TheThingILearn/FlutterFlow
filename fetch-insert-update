@@ -1,5 +1,10 @@
-//fetch
+//first one is for fetching/queary data from supabase.
+//words to change:
+tablename - to your supabase table name
+columnName - to your supabase coulumn you want to fetch or leave empty for all column
+argu - argumnet name 
 
+----------------------------------------------------------------------------------------------
 
 // Automatic FlutterFlow imports
 import '/backend/supabase/supabase.dart';
@@ -13,14 +18,79 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<BestdrinksRow?> fetch(String id) async {
+Future<tableNameRow?> fetch(String argu) async {
   final response = await Supabase.instance.client
-      .from('bestdrinks')
-      .select('drinks,notdrinks')
-      .eq('id', id)
+      .from('tablenName')
+      .select('columnName')
+      .eq('id', argue)
       .execute();
 
-  return BestdrinksRow(response.data[0]);
+  return tableNameRow(response.data[0]);
 }
+// Set your action name, define your arguments and return parameter,
+// and then add the boilerplate code using the green button on the right!
+
+----------------------------------------------------------------------------------------------
+
+//secound is for inserting row to supabase
+//words to change:
+tablename - to your supabase table name
+columnName - to your supabase coulumn you want to fetch or leave empty for all column
+argu - argument name
+
+----------------------------------------------------------------------------------------------
+
+// Automatic FlutterFlow imports
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom action code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+                    
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+Future insert(String? argu) async {
+final response = await Supabase.instance.client
+.from('tablename')
+.insert([{'columnName': argu}])
+.execute();
+}
+// Set your action name, define your arguments and return parameter,
+// and then add the boilerplate code using the green button on the right!
+
+----------------------------------------------------------------------------------------------
+
+//third is for update value in supabase
+//words to change:
+tablename - to your supabase table name
+columnName - to your supabase coulumn you want to fetch or leave empty for all column
+argu - argument name
+
+----------------------------------------------------------------------------------------------
+
+// Automatic FlutterFlow imports
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom action code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+// Define the AddtolistRow class if not already defined
+Future update(String? argu) async {
+  final response = await Supabase.instance.client
+      .from(table)
+      .update({column: drink})
+      .eq('id', argu)
+      .execute();
+}
+
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!
