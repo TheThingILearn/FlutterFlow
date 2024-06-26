@@ -84,11 +84,11 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 // Define the AddtolistRow class if not already defined
-Future update(String? argu) async {
+Future update(String? argu, String argu2) async {
 final response = await Supabase.instance.client
       .from('tablename')
       .update({'columnName': argu})
-      .eq('id', argu)
+      .eq('id', argu2)
       .execute();
 }
 
