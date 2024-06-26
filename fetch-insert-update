@@ -85,9 +85,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 // Define the AddtolistRow class if not already defined
 Future update(String? argu) async {
-  final response = await Supabase.instance.client
-      .from(table)
-      .update({column: drink})
+final response = await Supabase.instance.client
+      .from('tablename')
+      .update({'columnName': argu})
       .eq('id', argu)
       .execute();
 }
