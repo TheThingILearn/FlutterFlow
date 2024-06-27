@@ -1,7 +1,8 @@
 tablename - to your supabase table name
 columnName - to your supabase coulumn you want to fetch or leave empty for all column
-argu - argumnet name 
-argu2 - secound argumnet name 
+argu - argumnet name that will add what you wright to the list 
+id -  argumnet name that is name is id
+Listname - the name of the list items (it can be anything)
 ------------------------------------------------------------------------------------
 
 // Automatic FlutterFlow imports
@@ -16,23 +17,22 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<void> fetch3(String id, String? newvalue) async {
+Future<void> addToList(String id, String? argu) async {
   final response = await Supabase.instance.client
-      .from('shopinglist')
-      .select('foods')
+      .from('tablename')
+      .select('columnName')
       .eq('id', id)
       .execute();
 
   final data = response.data;
 
-  // Assuming the data is in the format [{ 'foods': ['apple', 'banana', 'carrot'] }]
   if (data is List && data.isNotEmpty && data[0] is Map<String, dynamic>) {
-    final List<dynamic> foods = data[0]['foods'];
-    foods.add(newvalue); // Convert List<dynamic> to List<String>
+    final List<dynamic> Listname = data[0]['columnName'];
+    Listname.add(argu);
 
     final updateResponse = await Supabase.instance.client
-        .from('shopinglist')
-        .update({'foods': foods})
+        .from('tablename')
+        .update({'columnName': argu})
         .eq('id', id)
         .execute();
   }
