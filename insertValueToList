@@ -27,7 +27,7 @@ Future<void> addToList(String id, String? argu) async {
   final data = response.data;
 
   if (data is List && data.isNotEmpty && data[0] is Map<String, dynamic>) {
-    final List<dynamic> Listname = data[0]['columnName'];
+    final List<dynamic> Listname = data[0]['columnName'] ?? [] ;
     Listname.add(argu);
 
     final updateResponse = await Supabase.instance.client
