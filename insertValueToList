@@ -16,23 +16,24 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future fetch2(String argu, String? argu2) async {
+Future<void> fetch3(String id, String? newvalue) async {
   final response = await Supabase.instance.client
-      .from('tableName')
-      .select('columnName')
-      .eq('id', argu)
+      .from('shopinglist')
+      .select('foods')
+      .eq('id', id)
       .execute();
 
   final data = response.data;
 
+  // Assuming the data is in the format [{ 'foods': ['apple', 'banana', 'carrot'] }]
   if (data is List && data.isNotEmpty && data[0] is Map<String, dynamic>) {
     final List<dynamic> foods = data[0]['foods'];
-    foods.add(argu2);
+    foods.add(newvalue); // Convert List<dynamic> to List<String>
 
-    final response = await Supabase.instance.client
-        .from('tableName')
-        .update([{foods}])
-        .eq('id', argu)
+    final updateResponse = await Supabase.instance.client
+        .from('shopinglist')
+        .update({'foods': foods})
+        .eq('id', id)
         .execute();
   }
 }
