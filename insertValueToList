@@ -32,7 +32,7 @@ Future<void> addToList(String id, String? argu) async {
 
     final updateResponse = await Supabase.instance.client
         .from('tablename')
-        .update({'columnName': argu})
+        .update({'columnName': Listname})
         .eq('id', id)
         .execute();
   }
