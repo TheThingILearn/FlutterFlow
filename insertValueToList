@@ -22,7 +22,6 @@ Future fetch2(String argu, String? argu2) async {
       .select('columnName')
       .eq('id', argu)
       .execute();
-  // Handle error
 
   final data = response.data;
 
