@@ -1,1 +1,3 @@
-all the code you see here have tutorial in the top of the code go check it out if you need
+----------------------------------------------------------------------------------------
+hey that github is for the Youtube chanle TheThigkILearn - https://www.youtube.com/@ThethingIlearn?sub_confirmation=1
+pleaes make sure to check that out and help me out.
