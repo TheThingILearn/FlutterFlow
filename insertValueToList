@@ -39,3 +39,54 @@ Future<void> addToList(String id, String? argu) async {
 }
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!
+
+------------------------------------------------------------------------------------
+
+addtolistextra code
+argumant to creat:
+name: tablename, type:string - notnull
+name: columnName, type:string - notnull
+name: id, type:string - notnull
+name: value, type: - string null
+
+------------------------------------------------------------------------------------
+
+// Automatic FlutterFlow imports
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom action code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+Future<void> addToListExtra(
+  String? value,
+  String tableName,
+  String coulmnName,
+  String id,
+) async {
+  final response = await Supabase.instance.client
+      .from(tableName)
+      .select(coulmnName)
+      .eq('id', id)
+      .execute();
+
+  final data = response.data;
+
+  if (data is List && data.isNotEmpty && data[0] is Map<String, dynamic>) {
+    final List<dynamic> newlist = data[0][coulmnName] ?? [];
+    newlist.add(value);
+
+    final updateResponse = await Supabase.instance.client
+        .from(tableName)
+        .update({coulmnName: newlist})
+        .eq('id', id)
+        .execute();
+  }
+}
+// Set your action name, define your arguments and return parameter,
+// and then add the boilerplate code using the green button on the right!
