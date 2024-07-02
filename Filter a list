@@ -1,0 +1,42 @@
+------------------------------------------------------------------------------------------
+
+TablenameRow - supabase table with capital start and Row in the end
+tablename - supabase table name as its Wright in supabase
+columnName - supabase coulumn name to filter on
+argu - argumnet name to the filter
+listname - the name of the list items (it can be anything)
+
+------------------------------------------------------------------------------------------
+
+// Automatic FlutterFlow imports
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom action code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+Future<List<TablenameRow>> fetchFilters(String? argu) async {
+  final query = Supabase.instance.client
+  .from('tablename')
+  .select('*');
+  {
+    if (argu != null && argu.isNotEmpty) query.eq('columnName', argu);
+    if (argu != null && argu.isNotEmpty) query.eq('columnName', argu);
+    if (argu != null && argu.isNotEmpty) query.eq('columnName', argu);
+  }
+  
+  final response = await query.execute();
+
+  final data = response.data as List<dynamic>;
+  final tablename = data.map((item) => TablenameRow(item)).toList();
+  return tablename;
+}
+// Set your action name, define your arguments and return parameter,
+// and then add the boilerplate code using the green button on the right!
+
+------------------------------------------------------------------------------------------
