@@ -6,6 +6,8 @@ columnName - supabase coulumn name to filter on
 argu - argumnet name to the filter
 listname - the name of the list items (it can be anything)
 
+all the common Filters-.eq .neq .gt .gte .lt .lte
+
 ------------------------------------------------------------------------------------------
 
 // Automatic FlutterFlow imports
