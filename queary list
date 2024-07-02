@@ -1,7 +1,5 @@
-fetch a list
-tablenameRow - with start with capital
-tablename - no capital
-varbname
+ta
+
 
 // Automatic FlutterFlow imports
 import '/backend/supabase/supabase.dart';
@@ -15,15 +13,21 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<List<tablenameRow>> fetch() async {
-  final response = await Supabase.instance.client
-    .from('tablename')
-    .select('*')
-    .execute();
+Future<List<CountriesRow>> fetchFilters(
+    String? country, String? continent, String? greater, String? lower) async {
+  final query = Supabase.instance.client.from('countries').select('*');
+  {
+    if (country != null && country.isNotEmpty) query.eq('name', country);
+    if (continent != null && continent.isNotEmpty)
+      query.neq('continent', continent);
+    if (greater != null && greater.isNotEmpty) query.gt('id', greater);
+    if (lower != null && lower.isNotEmpty) query.lt('id', lower);
+  }
+  final response = await query.execute();
 
   final data = response.data as List<dynamic>;
-  final varbname = data.map((item) => tablenameRow(item)).toList();
-  return varbname;
+  final countries = data.map((item) => CountriesRow(item)).toList();
+  return countries;
 }
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!
