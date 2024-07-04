@@ -1,9 +1,12 @@
+------------------------------------------------------------------------------------
+YouTube video guide - https://youtu.be/J9tiDb5giys
+----------------------------------------------------------------------------------------
 tablename - to your supabase table name
 columnName - to your supabase coulumn you want to fetch or leave empty for all column
 argu - argumnet name that will add what you wright to the list 
 id -  argumnet name that is name is id
 listname - the name of the list items (it can be anything)
-------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 
 // Automatic FlutterFlow imports
 import '/backend/supabase/supabase.dart';
