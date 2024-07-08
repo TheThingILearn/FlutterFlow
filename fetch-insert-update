@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------------------------
 YouTube video guide - https://youtu.be/1nCjNRk9-6k
 ----------------------------------------------------------------------------------------------
-//first one is for fetching/queary data from supabase.
+//FETCH/queary data from supabase.
 //words to change:
 tablename - to your supabase table name
 columnName - to your supabase coulumn you want to fetch or leave empty for all column
@@ -35,7 +35,7 @@ Future<tableNameRow?> fetch(String argu) async {
 
 ----------------------------------------------------------------------------------------------
 
-//secound is for inserting row to supabase
+//INSERT row to supabase
 //words to change:
 tablename - to your supabase table name
 columnName - to your supabase coulumn you want to fetch or leave empty for all column
@@ -66,7 +66,7 @@ final response = await Supabase.instance.client
 
 ----------------------------------------------------------------------------------------------
 
-//third is for update value in supabase
+//UPDATE value in supabase
 //words to change:
 tablename - to your supabase table name
 columnName - to your supabase coulumn you want to fetch or leave empty for all column
