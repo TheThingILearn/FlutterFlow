@@ -18,7 +18,7 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<List<TablenameRow>> fetchFilters(String? search) async {
+Future<List<TablenameRow>> search(String? search) async {
   final query = Supabase.instance.client
   .from('tablename')
   .select('*');
