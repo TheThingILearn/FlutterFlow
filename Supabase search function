@@ -3,6 +3,7 @@
 TablenameRow - supabase table with capital start and Row in the end
 tablename - supabase table name as its Wright in supabase
 columnName - supabase coulumn name to filter on
+argu - argument name
 
 --------------------------------------------------------------------------------
 
@@ -18,12 +19,12 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<List<TablenameRow>> search(String? search) async {
+Future<List<TablenameRow>> search(String? argu) async {
   final query = Supabase.instance.client
   .from('tablename')
   .select('*');
   {
-    if (search != null && search.isNotEmpty) query.ilike('columnName', '$search%');
+    if (argu != null && argu.isNotEmpty) query.ilike('columnName', '$argu%');
   }
   final response = await query.execute();
 
