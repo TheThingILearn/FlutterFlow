@@ -1,3 +1,11 @@
+--------------------------------------------------------------------------------
+
+TablenameRow - supabase table with capital start and Row in the end
+tablename - supabase table name as its Wright in supabase
+columnName - supabase coulumn name to filter on
+
+--------------------------------------------------------------------------------
+
 // Automatic FlutterFlow imports
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,16 +18,20 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<List<CountriesRow>> fetchFilters(String? search) async {
-  final query = Supabase.instance.client.from('countries').select('*');
+Future<List<TablenameRow>> fetchFilters(String? search) async {
+  final query = Supabase.instance.client
+  .from('tablename')
+  .select('*');
   {
-    if (search != null && search.isNotEmpty) query.ilike('name', '$search%');
+    if (search != null && search.isNotEmpty) query.ilike('columnName', '$search%');
   }
   final response = await query.execute();
 
   final data = response.data as List<dynamic>;
-  final countries = data.map((item) => CountriesRow(item)).toList();
-  return countries;
+  final tablename = data.map((item) => TablenameRow(item)).toList();
+  return tablename;
 }
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!
+
+--------------------------------------------------------------------------------
