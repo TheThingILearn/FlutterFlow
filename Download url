@@ -13,29 +13,18 @@ import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 
 Future<FFUploadedFile> urlDownload(String? url) async {
-  // Convert URL to bytes
   final bytes = await urlToBytes(url);
-
-  // Create and return FFUploadedFile
-  return FFUploadedFile(
-    name: '.jpg',
-    bytes: bytes,
-  );
+  return FFUploadedFile(name: '.jpg', bytes: bytes);
 }
 
 Future<Uint8List> urlToBytes(String? url) async {
-  // Make a GET request to the URL
   final response = await http.get(Uri.parse(url!));
 
-  // Check if the response is successful
   if (response.statusCode == 200) {
-    // Convert the response body to bytes
     final bytes = response.bodyBytes;
-
-    // Return the bytes
     return bytes;
-  } else {
-    // If the response is not successful, throw an error
+  
+ } else {
     throw Exception('Failed to download file');
   }
 }
