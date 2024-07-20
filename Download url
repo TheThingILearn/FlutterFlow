@@ -1,5 +1,4 @@
 // Automatic FlutterFlow imports
-import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -14,17 +13,19 @@ import 'package:http/http.dart' as http;
 
 Future<FFUploadedFile> urlDownload(String? url) async {
   final bytes = await urlToBytes(url);
-  return FFUploadedFile(name: '.jpg', bytes: bytes);
+  return FFUploadedFile(
+    name: '.jpg',
+    bytes: bytes,
+  );
 }
 
 Future<Uint8List> urlToBytes(String? url) async {
   final response = await http.get(Uri.parse(url!));
-
   if (response.statusCode == 200) {
     final bytes = response.bodyBytes;
+
     return bytes;
-  
- } else {
+  } else {
     throw Exception('Failed to download file');
   }
 }
