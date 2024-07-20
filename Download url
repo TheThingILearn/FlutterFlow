@@ -28,3 +28,46 @@ Future<Uint8List> urlToBytes(String? url) async {
     throw Exception('Failed to download file');
   }
 }
+
+
+// Automatic FlutterFlow imports
+import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom action code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'dart:typed_data';
+import 'package:http/http.dart' as http;
+
+Future<FFUploadedFile> urlDownload(String? url) async {
+  // Convert URL to bytes
+  final bytes = await urlToBytes(url);
+
+  // Create and return FFUploadedFile
+  return FFUploadedFile(
+    name: '.jpg',
+    bytes: bytes,
+  );
+}
+
+Future<Uint8List> urlToBytes(String? url) async {
+  // Make a GET request to the URL
+  final response = await http.get(Uri.parse(url!));
+
+  // Check if the response is successful
+  if (response.statusCode == 200) {
+    // Convert the response body to bytes
+    final bytes = response.bodyBytes;
+
+    // Return the bytes
+    return bytes;
+  } else {
+    // If the response is not successful, throw an error
+    throw Exception('Failed to download file');
+  }
+}
