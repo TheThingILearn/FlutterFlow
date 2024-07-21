@@ -2,7 +2,7 @@ bucketname - the name of your bucket in supabase
 path - folder/anotherfolder/
 filename - the name you want the file to be
 filetype - .png .jpg .txt ...
-argu - argumants name
+file - the uploadede file name
 ------------------------------------------------------------------------------------------
 
 // Automatic FlutterFlow imports
@@ -17,19 +17,19 @@ import 'package:flutter/material.dart';
 
 import 'dart:typed_data'; // Import for Uint8List
 
-Future<void> newCustomAction(FFUploadedFile? argu) async {
+Future<void> newCustomAction(FFUploadedFile? file, String filename) async {
   if (file == null) {
     print('No file provided');
     return;
   }
 
   try {
-    final Uint8List avatarFile = argu.bytes!;
+    final Uint8List uploadedFile = file.bytes!;
     final String fullPath = await Supabase.instance.client.storage
         .from('bucketname')
         .uploadBinary(
           'path/filename.filetype',
-          avatarFile,
+          uploadedFile,
           fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
         );
 
