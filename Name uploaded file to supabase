@@ -28,7 +28,7 @@ Future<void> newCustomAction(FFUploadedFile? file, String filename) async {
     final String fullPath = await Supabase.instance.client.storage
         .from('bucketname')
         .uploadBinary(
-          'path/filename.filetype',
+          'path/$filename.filetype',
           uploadedFile,
           fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
         );
