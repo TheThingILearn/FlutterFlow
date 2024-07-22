@@ -1,8 +1,7 @@
+------------------------------------------------------------------------------------------
 bucketname - the name of your bucket in supabase
 path - folder/anotherfolder/
-filename - the name you want the file to be
 filetype - .png .jpg .txt ...
-file - the uploadede file name
 ------------------------------------------------------------------------------------------
 
 // Automatic FlutterFlow imports
@@ -17,28 +16,21 @@ import 'package:flutter/material.dart';
 
 import 'dart:typed_data'; // Import for Uint8List
 
-Future<void> newCustomAction(FFUploadedFile? file, String filename) async {
-  if (file == null) {
-    print('No file provided');
-    return;
-  }
-
-  try {
-    final Uint8List uploadedFile = file.bytes!;
-    final String fullPath = await Supabase.instance.client.storage
+Future<String?> uploadfile(FFUploadedFile? file, String filename) async {
+  final Uint8List uploadedFile = file!.bytes!;
+  final String fullPath =  await Supabase.instance.client.storage
+      .from('bucketname')
+      .uploadBinary(
+            'path/$filename.filetype',
+            uploadedFile,
+            fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
+          );
+  {
+    final String publicUrl = await Supabase.instance.client.storage
         .from('bucketname')
-        .uploadBinary(
-          'path/$filename.filetype',
-          uploadedFile,
-          fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
-        );
+        .getPublicUrl('path/$filename.filetype');
 
-    // Optionally, handle the fullPath or any other logic here
-    print('File uploaded to: $fullPath');
-  } catch (e) {
-    print('Error uploading file: $e');
-    // Handle error
+    return publicUrl;
   }
 }
-
 ------------------------------------------------------------------------------------------
