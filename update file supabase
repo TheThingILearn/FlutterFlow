@@ -1,12 +1,8 @@
---------------------------------------------------------------------------------------
-
+------------------------------------------------------------------------------------------
 bucketname - the name of your bucket in supabase
 path - folder/anotherfolder/
-filename - the name you want the file to be
 filetype - .png .jpg .txt ...
-file - the uploadede file name
-
---------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 
 // Automatic FlutterFlow imports
 import '/backend/supabase/supabase.dart';
@@ -20,28 +16,21 @@ import 'package:flutter/material.dart';
 
 import 'dart:typed_data'; // Import for Uint8List
 
-Future<void> updateFile(FFUploadedFile? file, String filename) async {
-  if (file == null) {
-    print('No file provided');
-    return;
-  }
+Future<String?> updatefile(FFUploadedFile? file, String filename) async {
+  final Uint8List updateFile = file!.bytes!;
+  final String fullPath =  await Supabase.instance.client.storage
+      .from('bucketname')
+      .updateBinary(
+            'path/$filename.filetype',
+            updateFile,
+            fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
+          );
+  {
+    final String publicUrl = await Supabase.instance.client.storage
+        .from('bucketname')
+        .getPublicUrl('path/$filename.filetype');
 
-  try {
-    final Uint8List updateFile = file.bytes!;
-    final String fullPath = await Supabase.instance.client.storage
-        .from('photo')
-        .updateBinary(
-          'photos/$filename.png',
-          updateFile,
-          fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
-        );
-
-    // Optionally, handle the fullPath or any other logic here
-    print('File uploaded to: $fullPath');
-  } catch (e) {
-    print('Error uploading file: $e');
-    // Handle error
+    return publicUrl;
   }
 }
-
---------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
