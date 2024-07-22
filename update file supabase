@@ -1,7 +1,10 @@
+--------------------------------------------------------------------------------------
 
-
-
-
+bucketname - the name of your bucket in supabase
+path - folder/anotherfolder/
+filename - the name you want the file to be
+filetype - .png .jpg .txt ...
+file - the uploadede file name
 
 --------------------------------------------------------------------------------------
 
