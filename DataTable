@@ -50,13 +50,8 @@ import '/flutter_flow/uploaded_file.dart';
 import '/flutter_flow/custom_functions.dart';
 import '/backend/supabase/supabase.dart';
 
-List<tablenameRow> sortTable(
-  List<tablenameRow> tableSort,
-  bool ascending,
-  int columIndex,
-) {
-  /// MODIFY CODE ONLY BELOW THIS LINE
-
+  
+/// MODIFY CODE ONLY BELOW THIS LINE
 switch (columIndex) {
     case 0:
       tableSort.sort((a, b) => a.id!.compareTo(b.id!));
