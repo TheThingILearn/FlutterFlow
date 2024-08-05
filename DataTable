@@ -4,7 +4,7 @@ tablenameRow - table name and ROW in the end
 columnName - put how the column named in supabase
 filterByText
 tableFilter
-textInput
+textField
 --------------------------------------------------------------------------------------
 import 'dart:convert';
 import 'dart:math' as math;
