@@ -36,6 +36,10 @@ List<tablenameRow> filterByText(
 }
 --------------------------------------------------------------------------------------
 sort by order
+argumnets names-
+tableSort
+columIndex
+ascending
 --------------------------------------------------------------------------------------
 import 'dart:convert';
 import 'dart:math' as math;
