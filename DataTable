@@ -54,13 +54,13 @@ import '/backend/supabase/supabase.dart';
 /// MODIFY CODE ONLY BELOW THIS LINE
 switch (columIndex) {
     case 0:
-      tableSort.sort((a, b) => a.id!.compareTo(b.id!));
+      tableSort.sort((a, b) => a.columnName!.compareTo(b.columnName!));
       break;
     case 1:
-      tableSort.sort((a, b) => a.firstName!.compareTo(b.firstName!));
+      tableSort.sort((a, b) => a.columnName!.compareTo(b.columnName!));
       break;
     case 2:
-      tableSort.sort((a, b) => a.lastName!.compareTo(b.lastName!));
+      tableSort.sort((a, b) => a.columnName!.compareTo(b.columnName!));
       break;
     default:
       break;
