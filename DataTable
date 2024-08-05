@@ -28,8 +28,8 @@ List<tablenameRow> filterByText(
   {
     // Filter the list based on the filterText
     List<tablenameRow> filteredList = tableFilter.where((newgroup) {
-      return newgroup.columnName!.toLowerCase().contains(columnName.toLowerCase()) ||
-             newgroup.columnName!.toLowerCase().contains(columnName.toLowerCase());
+      return newgroup.columnName!.toLowerCase().contains(textField.toLowerCase()) ||
+             newgroup.columnName!.toLowerCase().contains(textField.toLowerCase());
     }).toList();
 
     return filteredList;
