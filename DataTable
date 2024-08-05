@@ -1,0 +1,79 @@
+--------------------------------------------------------------------------------------
+Search data table
+tablenameRow - table name and ROW in the end
+columnName - put how the column named in supabase
+--------------------------------------------------------------------------------------
+import 'dart:convert';
+import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart' as timeago;
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
+import '/flutter_flow/uploaded_file.dart';
+import '/flutter_flow/custom_functions.dart';
+import '/backend/supabase/supabase.dart';
+
+List<tablenameRow> filterByText(
+  List<tablenameRow> tableFilter,
+  String textInput,
+) {
+  /// MODIFY CODE ONLY BELOW THIS LINE
+
+  {
+    // Filter the list based on the filterText
+    List<tablenameRow> filteredList = tableFilter.where((newgroup) {
+      return newgroup.columnName!.toLowerCase().contains(columnName.toLowerCase()) ||
+             newgroup.columnName!.toLowerCase().contains(columnName.toLowerCase());
+    }).toList();
+
+    return filteredList;
+  }
+
+  /// MODIFY CODE ONLY ABOVE THIS LINE
+}
+--------------------------------------------------------------------------------------
+sort by order
+--------------------------------------------------------------------------------------
+import 'dart:convert';
+import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart' as timeago;
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
+import '/flutter_flow/uploaded_file.dart';
+import '/flutter_flow/custom_functions.dart';
+import '/backend/supabase/supabase.dart';
+
+List<tablenameRow> sortTable(
+  List<tablenameRow> tableSort,
+  bool ascending,
+  int columIndex,
+) {
+  /// MODIFY CODE ONLY BELOW THIS LINE
+
+switch (columIndex) {
+    case 0:
+      tableSort.sort((a, b) => a.id!.compareTo(b.id!));
+      break;
+    case 1:
+      tableSort.sort((a, b) => a.firstName!.compareTo(b.firstName!));
+      break;
+    case 2:
+      tableSort.sort((a, b) => a.lastName!.compareTo(b.lastName!));
+      break;
+    default:
+      break;
+  }
+  if (!ascending) {
+    tableSort = tableSort.reversed.toList();
+  }
+  return tableSort;
+
+  /// MODIFY CODE ONLY ABOVE THIS LINE
+}
