@@ -38,8 +38,8 @@ List<tablenameRow> filterByText(
 sort by order
 argumnets names-
 tableSort
-columIndex
 ascending
+columIndex
 --------------------------------------------------------------------------------------
 import 'dart:convert';
 import 'dart:math' as math;
