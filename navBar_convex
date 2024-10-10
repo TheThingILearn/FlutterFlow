@@ -1,3 +1,4 @@
+dependencies - convex_bottom_bar: ^3.2.0
 icon - the icon you want to display
 pageName - the name of the page you want to display
 
