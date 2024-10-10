@@ -1,0 +1,59 @@
+icon - the icon you want to display
+pageName - the name of the page you want to display
+
+----------------------------------------------------------------------------------------
+
+// Automatic FlutterFlow imports
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/widgets/index.dart'; // Imports other custom widgets
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom widget code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+
+class NavBar extends StatefulWidget {
+  const NavBar({
+    super.key,
+    this.width,
+    this.height,
+    this.onTap,
+  });
+
+  final double? width;
+  final double? height;
+  final Future Function(int? index)? onTap;
+
+  @override
+  State<NavBar> createState() => _NavBar2State();
+}
+
+class _NavBar2State extends State<NavBar> {
+  int _currentIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return ConvexAppBar(
+      items: [
+        TabItem(icon: Icons.icon, title: 'pageName'),
+        TabItem(icon: Icons.icon, title: 'pageName'),
+        TabItem(icon: Icons.icon, title: 'pageName'),
+      ],
+      initialActiveIndex: _currentIndex,
+      onTap: (index) {
+        setState(() {
+          _currentIndex = index;
+        });
+
+        // Call the provided onTap function if it's not null
+        if (widget.onTap != null) {
+          widget.onTap!(index);
+        }
+      },
+    );
+  }
+}
+
+----------------------------------------------------------------------------------------
