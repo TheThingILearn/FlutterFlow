@@ -1,3 +1,11 @@
+----------------------------------------------------------------------------------------
+tablename - to your supabase table name
+columnName - to your supabase coulumn you want to fetch or leave empty for all column
+argu - argumnet name that will add what you wright to the list 
+id -  argumnet name that is name is id
+listname - the name of the list items (it can be anything)
+----------------------------------------------------------------------------------------
+
 // Automatic FlutterFlow imports
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,26 +18,26 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<void> addToList2(int id, String? argu) async {
+Future<void> addToListv2(int id, String? argu) async {
   final response = await Supabase.instance.client
-      .from('shoping')
-      .select('product')
+      .from('tablename')
+      .select('columnName')
       .eq('id', id)
-      .maybeSingle(); // Retrieves a single row, returns null if no match
+      .maybeSingle();
 
-  if (response != null && response['product'] != null) {
-    final List<dynamic> productList = response['product'] ?? [];
-    productList.add(product);
+  if (response != null && response['columnName'] != null) {
+    final List<dynamic> listname = response['columnName'] ?? [];
+    productList.add(argu);
 
     final updateResponse = await Supabase.instance.client
-        .from('shoping')
-        .update({'product': productList}).eq('id', id);
+        .from('tablename')
+        .update({'columnName': listname}).eq('id', id);
 
     if (updateResponse == null) {
-      print("Error updating product list.");
+      print("Error updating list.");
     }
   } else {
-    print("Error fetching product list.");
+    print("Error fetching list.");
   }
 }
 
