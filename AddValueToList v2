@@ -27,7 +27,7 @@ Future<void> addToListv2(String id, String? argu) async {
 
   if (response != null && response['columnName'] != null) {
     final List<dynamic> listname = response['columnName'] ?? [];
-    productList.add(argu);
+    listname.add(argu);
 
     final updateResponse = await Supabase.instance.client
         .from('tablename')
