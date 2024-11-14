@@ -18,7 +18,7 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<void> addToListv2(int id, String? argu) async {
+Future<void> addToListv2(String id, String? argu) async {
   final response = await Supabase.instance.client
       .from('tablename')
       .select('columnName')
