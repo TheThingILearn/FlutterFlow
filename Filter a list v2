@@ -21,23 +21,35 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<List<TablenameRow>> fetchFiltersV2 (String? argu) async {
-  var query = Supabase.instance.client.from('tablename').select('*');
+Future<List<TablenameRow>> fetchFiltersV2(
+  String? argu,
+  String? argu,
+) async {
+  try {
+    // Start building the query
+    var query = Supabase.instance.client.from('tablename').select();
 
-  if (argu != null && argu.isNotEmpty) {
-    query = query.eq('columnName', argu);
-  }
-  if (argu != null && argu.isNotEmpty) {
-    query = query.eq('columnName', argu);
-  }
- if (argu != null && argu.isNotEmpty) {
-    query = query.eq('columnName', argu);
-  }
+    // Add filters conditionally
+    if (argu != null && argu.isNotEmpty) {
+      query = query.eq('columnName', argu);
+    }
+   if (argu != null && argu.isNotEmpty) {
+      query = query.eq('columnName', argu);
+    }
+   if (argu != null && argu.isNotEmpty) {
+      query = query.eq('columnName', argu);
+    } 
 
-  final response = await query;
-
-  final data = response as List<dynamic>;
-  return (data).map((item) => TablenameRow(item)).toList();
+    // Execute the query and handle response
+    final response = await query;
+    if (response.isNotEmpty) {
+      return response.map((item) => TablenameRow(item)).toList();
+    }
+    return []; // Return empty list if no data
+  } catch (e) {
+    debugPrint('Error fetching filters: $e');
+    return [];
+  }
 }
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!
