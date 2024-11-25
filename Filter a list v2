@@ -13,10 +13,11 @@ all the common Filters-.eq .neq .gt .gte .lt .lte
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart'; // Imports other custom actions
+import '/custom_code/widgets/index.dart'; // Imports other custom widgets
+import '/custom_code/actions/index.dart'; // Imports custom actions
 import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
-// Begin custom action code
+// Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -33,12 +34,12 @@ Future<List<TablenameRow>> fetchFiltersV2(
     if (argu != null && argu.isNotEmpty) {
       query = query.eq('columnName', argu);
     }
-   if (argu != null && argu.isNotEmpty) {
+    if (argu != null && argu.isNotEmpty) {
       query = query.eq('columnName', argu);
     }
-   if (argu != null && argu.isNotEmpty) {
+    if (argu != null && argu.isNotEmpty) {
       query = query.eq('columnName', argu);
-    } 
+    }
 
     // Execute the query and handle response
     final response = await query;
