@@ -22,20 +22,13 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<List<TablenameRow>> fetchFiltersV2(
-  String? argu,
-  String? argu,
+  String? argu
 ) async {
   try {
     // Start building the query
     var query = Supabase.instance.client.from('tablename').select();
 
     // Add filters conditionally
-    if (argu != null && argu.isNotEmpty) {
-      query = query.eq('columnName', argu);
-    }
-    if (argu != null && argu.isNotEmpty) {
-      query = query.eq('columnName', argu);
-    }
     if (argu != null && argu.isNotEmpty) {
       query = query.eq('columnName', argu);
     }
