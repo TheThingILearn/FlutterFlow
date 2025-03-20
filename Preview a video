@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'dart:io';
-
 import 'package:universal_html/html.dart' as html;
 import 'package:flutter/foundation.dart';
 
