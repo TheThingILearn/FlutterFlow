@@ -1,6 +1,7 @@
 ------------------------------------------------------------------------------------
 Package to import: universal_html: ^2.2.4
 ------------------------------------------------------------------------------------
+
 // Automatic FlutterFlow imports
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
@@ -35,4 +36,5 @@ Future<String> videoPreviewV2(FFUploadedFile videoFile) async {
 
   return url;
 }
+
 ------------------------------------------------------------------------------------
