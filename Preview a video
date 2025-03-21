@@ -17,7 +17,7 @@ import 'dart:io';
 import 'package:universal_html/html.dart' as html;
 import 'package:flutter/foundation.dart';
 
-Future<String> videoPreviewV2(FFUploadedFile videoFile) async {
+Future<String> videoPreview(FFUploadedFile videoFile) async {
   Uint8List? videoBytes = videoFile.bytes;
   String? url;
 
