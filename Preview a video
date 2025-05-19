@@ -3,7 +3,6 @@ Package to import: universal_html: ^2.2.4
 ------------------------------------------------------------------------------------
 
 // Automatic FlutterFlow imports
-import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
